@@ -19,10 +19,11 @@ interface Props {
   color: string
   cards: CardData[]
   onSelect: (card: CardData) => void
+  droppable?: boolean
 }
 
-export function KanbanColumn({ id, title, color, cards, onSelect }: Props) {
-  const { setNodeRef, isOver } = useDroppable({ id })
+export function KanbanColumn({ id, title, color, cards, onSelect, droppable = true }: Props) {
+  const { setNodeRef, isOver } = useDroppable({ id, disabled: !droppable })
 
   const accentColor = COLOR_MAP[color] ?? '#8b949e'
 

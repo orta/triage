@@ -1,5 +1,5 @@
 /**
- * @generated SignedSource<<64848c9cca1fcd5b2cb5ad65b00e5160>>
+ * @generated SignedSource<<8af144d55447795863cf478554924783>>
  * @lightSyntaxTransform
  * @nogrep
  */
@@ -94,6 +94,11 @@ export type KanbanBoardQuery$data = {
           };
           readonly id: string;
         } | null | undefined> | null | undefined;
+        readonly pageInfo: {
+          readonly endCursor: string | null | undefined;
+          readonly hasNextPage: boolean;
+        };
+        readonly totalCount: number;
       };
       readonly title: string;
     } | null | undefined;
@@ -201,97 +206,129 @@ v11 = [
     "value": 100
   }
 ],
-v12 = [
+v12 = {
+  "alias": null,
+  "args": null,
+  "kind": "ScalarField",
+  "name": "totalCount",
+  "storageKey": null
+},
+v13 = {
+  "alias": null,
+  "args": null,
+  "concreteType": "PageInfo",
+  "kind": "LinkedField",
+  "name": "pageInfo",
+  "plural": false,
+  "selections": [
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "endCursor",
+      "storageKey": null
+    },
+    {
+      "alias": null,
+      "args": null,
+      "kind": "ScalarField",
+      "name": "hasNextPage",
+      "storageKey": null
+    }
+  ],
+  "storageKey": null
+},
+v14 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 10
   }
 ],
-v13 = {
+v15 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "optionId",
   "storageKey": null
 },
-v14 = [
+v16 = [
   (v4/*: any*/)
 ],
-v15 = {
+v17 = {
   "kind": "InlineFragment",
-  "selections": (v14/*: any*/),
+  "selections": (v16/*: any*/),
   "type": "ProjectV2FieldCommon",
   "abstractKey": "__isProjectV2FieldCommon"
 },
-v16 = {
+v18 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "number",
   "storageKey": null
 },
-v17 = {
+v19 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "url",
   "storageKey": null
 },
-v18 = {
+v20 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "bodyHTML",
   "storageKey": null
 },
-v19 = {
+v21 = {
   "alias": "issueState",
   "args": null,
   "kind": "ScalarField",
   "name": "state",
   "storageKey": null
 },
-v20 = {
+v22 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "login",
   "storageKey": null
 },
-v21 = {
+v23 = {
   "alias": null,
   "args": null,
   "kind": "ScalarField",
   "name": "avatarUrl",
   "storageKey": null
 },
-v22 = [
-  (v20/*: any*/),
-  (v21/*: any*/)
+v24 = [
+  (v22/*: any*/),
+  (v23/*: any*/)
 ],
-v23 = [
+v25 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 5
   }
 ],
-v24 = [
+v26 = [
   {
     "kind": "Literal",
     "name": "first",
     "value": 3
   }
 ],
-v25 = {
+v27 = {
   "kind": "InlineFragment",
   "selections": [
     (v4/*: any*/),
     (v5/*: any*/),
-    (v16/*: any*/),
-    (v17/*: any*/),
     (v18/*: any*/),
+    (v19/*: any*/),
+    (v20/*: any*/),
     {
       "alias": "prState",
       "args": null,
@@ -303,18 +340,18 @@ v25 = {
   "type": "PullRequest",
   "abstractKey": null
 },
-v26 = {
+v28 = {
   "kind": "InlineFragment",
   "selections": [
     (v5/*: any*/),
-    (v18/*: any*/)
+    (v20/*: any*/)
   ],
   "type": "DraftIssue",
   "abstractKey": null
 },
-v27 = {
+v29 = {
   "kind": "InlineFragment",
-  "selections": (v14/*: any*/),
+  "selections": (v16/*: any*/),
   "type": "Node",
   "abstractKey": "__isNode"
 };
@@ -378,6 +415,8 @@ return {
                 "name": "items",
                 "plural": false,
                 "selections": [
+                  (v12/*: any*/),
+                  (v13/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -389,7 +428,7 @@ return {
                       (v4/*: any*/),
                       {
                         "alias": null,
-                        "args": (v12/*: any*/),
+                        "args": (v14/*: any*/),
                         "concreteType": "ProjectV2ItemFieldValueConnection",
                         "kind": "LinkedField",
                         "name": "fieldValues",
@@ -407,7 +446,7 @@ return {
                               {
                                 "kind": "InlineFragment",
                                 "selections": [
-                                  (v13/*: any*/),
+                                  (v15/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -416,7 +455,7 @@ return {
                                     "name": "field",
                                     "plural": false,
                                     "selections": [
-                                      (v15/*: any*/)
+                                      (v17/*: any*/)
                                     ],
                                     "storageKey": null
                                   }
@@ -444,10 +483,10 @@ return {
                             "selections": [
                               (v4/*: any*/),
                               (v5/*: any*/),
-                              (v16/*: any*/),
-                              (v17/*: any*/),
                               (v18/*: any*/),
                               (v19/*: any*/),
+                              (v20/*: any*/),
+                              (v21/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -455,12 +494,12 @@ return {
                                 "kind": "LinkedField",
                                 "name": "author",
                                 "plural": false,
-                                "selections": (v22/*: any*/),
+                                "selections": (v24/*: any*/),
                                 "storageKey": null
                               },
                               {
                                 "alias": null,
-                                "args": (v23/*: any*/),
+                                "args": (v25/*: any*/),
                                 "concreteType": "LabelConnection",
                                 "kind": "LinkedField",
                                 "name": "labels",
@@ -484,7 +523,7 @@ return {
                               },
                               {
                                 "alias": null,
-                                "args": (v24/*: any*/),
+                                "args": (v26/*: any*/),
                                 "concreteType": "UserConnection",
                                 "kind": "LinkedField",
                                 "name": "assignees",
@@ -497,7 +536,7 @@ return {
                                     "kind": "LinkedField",
                                     "name": "nodes",
                                     "plural": true,
-                                    "selections": (v22/*: any*/),
+                                    "selections": (v24/*: any*/),
                                     "storageKey": null
                                   }
                                 ],
@@ -507,8 +546,8 @@ return {
                             "type": "Issue",
                             "abstractKey": null
                           },
-                          (v25/*: any*/),
-                          (v26/*: any*/)
+                          (v27/*: any*/),
+                          (v28/*: any*/)
                         ],
                         "storageKey": null
                       }
@@ -573,7 +612,7 @@ return {
                     "selections": [
                       (v7/*: any*/),
                       (v10/*: any*/),
-                      (v27/*: any*/)
+                      (v29/*: any*/)
                     ],
                     "storageKey": null
                   }
@@ -588,6 +627,8 @@ return {
                 "name": "items",
                 "plural": false,
                 "selections": [
+                  (v12/*: any*/),
+                  (v13/*: any*/),
                   {
                     "alias": null,
                     "args": null,
@@ -599,7 +640,7 @@ return {
                       (v4/*: any*/),
                       {
                         "alias": null,
-                        "args": (v12/*: any*/),
+                        "args": (v14/*: any*/),
                         "concreteType": "ProjectV2ItemFieldValueConnection",
                         "kind": "LinkedField",
                         "name": "fieldValues",
@@ -617,7 +658,7 @@ return {
                               {
                                 "kind": "InlineFragment",
                                 "selections": [
-                                  (v13/*: any*/),
+                                  (v15/*: any*/),
                                   {
                                     "alias": null,
                                     "args": null,
@@ -627,8 +668,8 @@ return {
                                     "plural": false,
                                     "selections": [
                                       (v7/*: any*/),
-                                      (v15/*: any*/),
-                                      (v27/*: any*/)
+                                      (v17/*: any*/),
+                                      (v29/*: any*/)
                                     ],
                                     "storageKey": null
                                   }
@@ -636,7 +677,7 @@ return {
                                 "type": "ProjectV2ItemFieldSingleSelectValue",
                                 "abstractKey": null
                               },
-                              (v27/*: any*/)
+                              (v29/*: any*/)
                             ],
                             "storageKey": null
                           }
@@ -657,10 +698,10 @@ return {
                             "selections": [
                               (v4/*: any*/),
                               (v5/*: any*/),
-                              (v16/*: any*/),
-                              (v17/*: any*/),
                               (v18/*: any*/),
                               (v19/*: any*/),
+                              (v20/*: any*/),
+                              (v21/*: any*/),
                               {
                                 "alias": null,
                                 "args": null,
@@ -670,15 +711,15 @@ return {
                                 "plural": false,
                                 "selections": [
                                   (v7/*: any*/),
-                                  (v20/*: any*/),
-                                  (v21/*: any*/),
-                                  (v27/*: any*/)
+                                  (v22/*: any*/),
+                                  (v23/*: any*/),
+                                  (v29/*: any*/)
                                 ],
                                 "storageKey": null
                               },
                               {
                                 "alias": null,
-                                "args": (v23/*: any*/),
+                                "args": (v25/*: any*/),
                                 "concreteType": "LabelConnection",
                                 "kind": "LinkedField",
                                 "name": "labels",
@@ -703,7 +744,7 @@ return {
                               },
                               {
                                 "alias": null,
-                                "args": (v24/*: any*/),
+                                "args": (v26/*: any*/),
                                 "concreteType": "UserConnection",
                                 "kind": "LinkedField",
                                 "name": "assignees",
@@ -717,8 +758,8 @@ return {
                                     "name": "nodes",
                                     "plural": true,
                                     "selections": [
-                                      (v20/*: any*/),
-                                      (v21/*: any*/),
+                                      (v22/*: any*/),
+                                      (v23/*: any*/),
                                       (v4/*: any*/)
                                     ],
                                     "storageKey": null
@@ -730,9 +771,9 @@ return {
                             "type": "Issue",
                             "abstractKey": null
                           },
-                          (v25/*: any*/),
-                          (v26/*: any*/),
-                          (v27/*: any*/)
+                          (v27/*: any*/),
+                          (v28/*: any*/),
+                          (v29/*: any*/)
                         ],
                         "storageKey": null
                       }
@@ -752,16 +793,16 @@ return {
     ]
   },
   "params": {
-    "cacheID": "d801272e1ff99681239c38cf17ebbcf3",
+    "cacheID": "b75ca8c3a923aadaade0967dff0ab78c",
     "id": null,
     "metadata": {},
     "name": "KanbanBoardQuery",
     "operationKind": "query",
-    "text": "query KanbanBoardQuery(\n  $org: String!\n  $number: Int!\n) {\n  organization(login: $org) {\n    projectV2(number: $number) {\n      id\n      title\n      fields(first: 20) {\n        nodes {\n          __typename\n          ... on ProjectV2SingleSelectField {\n            id\n            name\n            options {\n              id\n              name\n              color\n            }\n          }\n          ... on Node {\n            __isNode: __typename\n            id\n          }\n        }\n      }\n      items(first: 100) {\n        nodes {\n          id\n          fieldValues(first: 10) {\n            nodes {\n              __typename\n              ... on ProjectV2ItemFieldSingleSelectValue {\n                optionId\n                field {\n                  __typename\n                  ... on ProjectV2FieldCommon {\n                    __isProjectV2FieldCommon: __typename\n                    id\n                  }\n                  ... on Node {\n                    __isNode: __typename\n                    id\n                  }\n                }\n              }\n              ... on Node {\n                __isNode: __typename\n                id\n              }\n            }\n          }\n          content {\n            __typename\n            ... on Issue {\n              id\n              title\n              number\n              url\n              bodyHTML\n              issueState: state\n              author {\n                __typename\n                login\n                avatarUrl\n                ... on Node {\n                  __isNode: __typename\n                  id\n                }\n              }\n              labels(first: 5) {\n                nodes {\n                  name\n                  color\n                  id\n                }\n              }\n              assignees(first: 3) {\n                nodes {\n                  login\n                  avatarUrl\n                  id\n                }\n              }\n            }\n            ... on PullRequest {\n              id\n              title\n              number\n              url\n              bodyHTML\n              prState: state\n            }\n            ... on DraftIssue {\n              title\n              bodyHTML\n            }\n            ... on Node {\n              __isNode: __typename\n              id\n            }\n          }\n        }\n      }\n    }\n    id\n  }\n}\n"
+    "text": "query KanbanBoardQuery(\n  $org: String!\n  $number: Int!\n) {\n  organization(login: $org) {\n    projectV2(number: $number) {\n      id\n      title\n      fields(first: 20) {\n        nodes {\n          __typename\n          ... on ProjectV2SingleSelectField {\n            id\n            name\n            options {\n              id\n              name\n              color\n            }\n          }\n          ... on Node {\n            __isNode: __typename\n            id\n          }\n        }\n      }\n      items(first: 100) {\n        totalCount\n        pageInfo {\n          endCursor\n          hasNextPage\n        }\n        nodes {\n          id\n          fieldValues(first: 10) {\n            nodes {\n              __typename\n              ... on ProjectV2ItemFieldSingleSelectValue {\n                optionId\n                field {\n                  __typename\n                  ... on ProjectV2FieldCommon {\n                    __isProjectV2FieldCommon: __typename\n                    id\n                  }\n                  ... on Node {\n                    __isNode: __typename\n                    id\n                  }\n                }\n              }\n              ... on Node {\n                __isNode: __typename\n                id\n              }\n            }\n          }\n          content {\n            __typename\n            ... on Issue {\n              id\n              title\n              number\n              url\n              bodyHTML\n              issueState: state\n              author {\n                __typename\n                login\n                avatarUrl\n                ... on Node {\n                  __isNode: __typename\n                  id\n                }\n              }\n              labels(first: 5) {\n                nodes {\n                  name\n                  color\n                  id\n                }\n              }\n              assignees(first: 3) {\n                nodes {\n                  login\n                  avatarUrl\n                  id\n                }\n              }\n            }\n            ... on PullRequest {\n              id\n              title\n              number\n              url\n              bodyHTML\n              prState: state\n            }\n            ... on DraftIssue {\n              title\n              bodyHTML\n            }\n            ... on Node {\n              __isNode: __typename\n              id\n            }\n          }\n        }\n      }\n    }\n    id\n  }\n}\n"
   }
 };
 })();
 
-(node as any).hash = "38904ec310d184ad8c037dd377b98742";
+(node as any).hash = "0f20b63384fd43eaf929bb7bfb3fe86b";
 
 export default node;

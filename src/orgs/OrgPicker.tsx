@@ -31,6 +31,11 @@ export function OrgPicker({ onSignOut }: Props) {
   const [lastOrg, setLastOrg] = useState(() => localStorage.getItem('last_org'))
 
   useEffect(() => {
+    localStorage.setItem('github_viewer_login', data.viewer.login)
+    localStorage.setItem('github_viewer_avatar', data.viewer.avatarUrl)
+  }, [data.viewer.login, data.viewer.avatarUrl])
+
+  useEffect(() => {
     const token = localStorage.getItem('github_token')
     fetch('https://api.github.com/user/orgs?per_page=100', {
       headers: { Authorization: `bearer ${token}` },

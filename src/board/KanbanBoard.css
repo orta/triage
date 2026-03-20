@@ -21,6 +21,11 @@
   color: #e6edf3;
 }
 
+.board-title-loading {
+  font-weight: 400;
+  color: #8b949e;
+}
+
 .board-body {
   display: flex;
   flex: 1;
@@ -153,7 +158,14 @@
   cursor: grabbing;
 }
 
+.kanban-card__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
 .kanban-card__title {
+  flex: 1;
   font-size: 13px;
   color: #e6edf3;
   line-height: 1.4;
@@ -162,7 +174,8 @@
 .kanban-card__meta {
   display: flex;
   align-items: center;
-  gap: 8px;
+  flex-wrap: wrap;
+  gap: 4px;
 }
 
 .kanban-card__number {
@@ -210,11 +223,17 @@
 
 .kanban-card__assignees {
   display: flex;
-  gap: 4px;
+  flex-shrink: 0;
 }
 
 .kanban-card__avatar {
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  border: 1.5px solid #0d1117;
+  margin-left: -6px;
+}
+
+.kanban-card__assignees .kanban-card__avatar:first-child {
+  margin-left: 0;
 }

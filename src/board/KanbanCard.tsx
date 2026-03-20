@@ -21,6 +21,11 @@ interface Props {
   onSelect: (card: CardData) => void
 }
 
+function repoFromUrl(url?: string) {
+  const match = url?.match(/github\.com\/[^/]+\/([^/]+)\//)
+  return match ? match[1] : null
+}
+
 export function KanbanCard({ card, columnId, onSelect }: Props) {
   const { attributes, listeners, setNodeRef, transform, isDragging } = useDraggable({
     id: card.id,
@@ -32,6 +37,9 @@ export function KanbanCard({ card, columnId, onSelect }: Props) {
     opacity: isDragging ? 0.4 : 1,
   }
 
+  const repo = repoFromUrl(card.url)
+  const showState = card.state && card.state.toUpperCase() !== 'OPEN'
+
   return (
     <div
       ref={setNodeRef}
@@ -41,21 +49,29 @@ export function KanbanCard({ card, columnId, onSelect }: Props) {
       {...listeners}
       {...attributes}
     >
-      <div className="kanban-card__title">{card.title}</div>
+      <div className="kanban-card__top">
+        <div className="kanban-card__title">{card.title}</div>
+        {card.assignees.length > 0 && (
+          <div className="kanban-card__assignees">
+            {card.assignees.map((a) => (
+              <img key={a.login} src={a.avatarUrl} alt={a.login} title={a.login} className="kanban-card__avatar" />
+            ))}
+          </div>
+        )}
+      </div>
 
-      {card.number !== undefined && (
+      {(card.number !== undefined || showState || card.labels.length > 0) && (
         <div className="kanban-card__meta">
-          <span className="kanban-card__number">#{card.number}</span>
-          {card.state && (
-            <span className={`kanban-card__state kanban-card__state--${card.state.toLowerCase()}`}>
+          {card.number !== undefined && (
+            <span className="kanban-card__number">
+              {repo ? `${repo}#${card.number}` : `#${card.number}`}
+            </span>
+          )}
+          {showState && (
+            <span className={`kanban-card__state kanban-card__state--${card.state!.toLowerCase()}`}>
               {card.state}
             </span>
           )}
-        </div>
-      )}
-
-      {card.labels.length > 0 && (
-        <div className="kanban-card__labels">
           {card.labels.map((label) => (
             <span
               key={label.name}
@@ -64,14 +80,6 @@ export function KanbanCard({ card, columnId, onSelect }: Props) {
             >
               {label.name}
             </span>
-          ))}
-        </div>
-      )}
-
-      {card.assignees.length > 0 && (
-        <div className="kanban-card__assignees">
-          {card.assignees.map((a) => (
-            <img key={a.login} src={a.avatarUrl} alt={a.login} title={a.login} className="kanban-card__avatar" />
           ))}
         </div>
       )}
