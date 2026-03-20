@@ -193,7 +193,7 @@ export function CardSidebar({ card, onClose, columns, currentColumnId, onMove, o
   const [bodyScrolled, setBodyScrolled] = useState(false)
   const [timelineEvents, setTimelineEvents] = useState<DisplayEvent[]>([])
   const [timelineLoading, setTimelineLoading] = useState(false)
-  const [mentionQuery, setMentionQuery] = useState<string | null>(null)
+
   const [mentionResults, setMentionResults] = useState<Array<{ number: number; title: string; pull_request?: unknown }>>([])
   const [mentionIndex, setMentionIndex] = useState(0)
   const textareaRef = useRef<HTMLTextAreaElement>(null)
@@ -385,10 +385,9 @@ export function CardSidebar({ card, onClose, columns, currentColumnId, onMove, o
     const cursor = textarea.selectionStart
     const textBefore = commentBody.slice(0, cursor)
     const match = textBefore.match(/#(\w*)$/)
-    if (!match) { setMentionQuery(null); setMentionResults([]); return }
+    if (!match) { setMentionResults([]); return }
 
     const q = match[1]
-    setMentionQuery(q)
     setMentionIndex(0)
 
     const token = localStorage.getItem('github_token')
@@ -416,7 +415,6 @@ export function CardSidebar({ card, onClose, columns, currentColumnId, onMove, o
     const after = commentBody.slice(cursor)
     const replaced = before.replace(/#(\w*)$/, `#${number}`)
     setCommentBody(replaced + after)
-    setMentionQuery(null)
     setMentionResults([])
     requestAnimationFrame(() => {
       textarea.focus()
@@ -429,7 +427,7 @@ export function CardSidebar({ card, onClose, columns, currentColumnId, onMove, o
       if (e.key === 'ArrowDown') { e.preventDefault(); setMentionIndex((i) => (i + 1) % mentionResults.length); return }
       if (e.key === 'ArrowUp') { e.preventDefault(); setMentionIndex((i) => (i - 1 + mentionResults.length) % mentionResults.length); return }
       if (e.key === 'Enter' && !e.metaKey && !e.ctrlKey) { e.preventDefault(); insertMention(mentionResults[mentionIndex].number); return }
-      if (e.key === 'Escape') { setMentionQuery(null); setMentionResults([]); return }
+      if (e.key === 'Escape') { setMentionResults([]); return }
     }
     if (e.key === 'Enter' && (e.metaKey || e.ctrlKey)) submitComment(false)
   }, [submitComment, mentionResults, mentionIndex, insertMention])
