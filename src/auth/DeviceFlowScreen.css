@@ -1,0 +1,149 @@
+.device-flow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #0d1117;
+}
+
+.device-flow__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 48px;
+  background: #161b22;
+  border: 1px solid #30363d;
+  border-radius: 12px;
+  width: 340px;
+  text-align: center;
+  color: #e6edf3;
+}
+
+.device-flow__card h1 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.device-flow__card p {
+  font-size: 14px;
+  color: #8b949e;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.device-flow__card a {
+  color: #58a6ff;
+}
+
+.device-flow__logo {
+  width: 48px;
+  height: 48px;
+  fill: #e6edf3;
+}
+
+.device-flow__btn {
+  width: 100%;
+  padding: 10px 16px;
+  background: #238636;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.device-flow__btn:hover {
+  background: #2ea043;
+}
+
+.device-flow__code {
+  font-family: monospace;
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  color: #e6edf3;
+  background: #0d1117;
+  border: 2px dashed #30363d;
+  border-radius: 8px;
+  padding: 16px 24px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+
+.device-flow__code:hover {
+  border-color: #58a6ff;
+}
+
+.device-flow__hint {
+  font-size: 12px !important;
+  color: #6e7681 !important;
+}
+
+.device-flow__cancel {
+  background: none;
+  border: none;
+  color: #6e7681;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.device-flow__cancel:hover {
+  color: #8b949e;
+}
+
+.device-flow__error {
+  color: #f85149 !important;
+}
+
+.device-flow__spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #30363d;
+  border-top-color: #58a6ff;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.device-flow__input {
+  width: 100%;
+  padding: 8px 12px;
+  background: #0d1117;
+  border: 1px solid #30363d;
+  border-radius: 6px;
+  color: #e6edf3;
+  font-size: 13px;
+  font-family: monospace;
+  outline: none;
+}
+
+.device-flow__input:focus {
+  border-color: #58a6ff;
+  box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.1);
+}
+
+.device-flow__input::placeholder {
+  color: #3d444d;
+}
+
+.device-flow__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.device-flow__card code {
+  font-family: monospace;
+  font-size: 12px;
+  background: #0d1117;
+  padding: 1px 5px;
+  border-radius: 4px;
+  border: 1px solid #30363d;
+  color: #e6edf3;
+}

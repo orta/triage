@@ -1,0 +1,16 @@
+{
+  "src": "./src",
+  "schema": "./schema.graphql",
+  "language": "typescript",
+  "artifactDirectory": "./src/__generated__",
+  "customScalarTypes": {
+    "URI": "string",
+    "DateTime": "string",
+    "HTML": "string",
+    "GitObjectID": "string",
+    "GitTimestamp": "string",
+    "PreciseDateTime": "string",
+    "X509Certificate": "string",
+    "Base64String": "string"
+  }
+}
