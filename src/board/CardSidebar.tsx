@@ -510,20 +510,10 @@ export function CardSidebar({ card, onClose, columns, currentColumnId, onMove, o
                 <span>{card.author.login}</span>
               </div>
             )}
-            {card.labels.length === 0 && localAssignees.length > 0 && (
-              <div className="card-sidebar__assignees card-sidebar__assignees--inline">
-                {localAssignees.map((a) => (
-                  <div key={a.login} className="card-sidebar__assignee">
-                    <img src={a.avatarUrl} alt={a.login} />
-                    <span>{a.login}</span>
-                  </div>
-                ))}
-              </div>
-            )}
           </div>
         )}
 
-        <div className="card-sidebar__section">
+        <div className={`card-sidebar__section${card.labels.length === 0 && card.author ? ' card-sidebar__section--pull-up' : ''}`}>
           <div className="card-sidebar__section-label">
             Assignees
             {card.contentId && (
@@ -575,19 +565,17 @@ export function CardSidebar({ card, onClose, columns, currentColumnId, onMove, o
               </div>
             )}
           </div>
-          {card.labels.length > 0 && (
-            localAssignees.length > 0 ? (
-              <div className="card-sidebar__assignees">
-                {localAssignees.map((a) => (
-                  <div key={a.login} className="card-sidebar__assignee">
-                    <img src={a.avatarUrl} alt={a.login} />
-                    <span>{a.login}</span>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <span className="card-sidebar__empty">No assignee</span>
-            )
+          {localAssignees.length > 0 ? (
+            <div className="card-sidebar__assignees">
+              {localAssignees.map((a) => (
+                <div key={a.login} className="card-sidebar__assignee">
+                  <img src={a.avatarUrl} alt={a.login} />
+                  <span>{a.login}</span>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <span className="card-sidebar__empty">No assignee</span>
           )}
         </div>
 

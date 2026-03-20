@@ -28,6 +28,7 @@ export function OrgPicker({ onSignOut }: Props) {
   const data = useLazyLoadQuery<OrgPickerQueryType>(query, {})
   const [, navigate] = useLocation()
   const [orgs, setOrgs] = useState<Org[]>([])
+  const [orgsError, setOrgsError] = useState<string | null>(null)
   const [lastOrg, setLastOrg] = useState(() => localStorage.getItem('last_org'))
 
   useEffect(() => {
@@ -40,14 +41,19 @@ export function OrgPicker({ onSignOut }: Props) {
     fetch('https://api.github.com/user/orgs?per_page=100', {
       headers: { Authorization: `bearer ${token}` },
     })
-      .then((r) => r.json())
-      .then((data: Org[]) =>
+      .then((r) => {
+        if (!r.ok) throw new Error(`GitHub returned ${r.status}`)
+        return r.json()
+      })
+      .then((data: Org[]) => {
+        if (!Array.isArray(data)) throw new Error('Unexpected response from GitHub')
         setOrgs(data.sort((a, b) => {
           if (a.login === lastOrg) return -1
           if (b.login === lastOrg) return 1
           return 0
         }))
-      )
+      })
+      .catch((e: Error) => setOrgsError(e.message))
   }, [])
 
   return (
@@ -66,6 +72,13 @@ export function OrgPicker({ onSignOut }: Props) {
           </button>
         </div>
       </div>
+
+      {orgsError && (
+        <div style={{ color: '#f85149', fontSize: 13, display: 'flex', alignItems: 'center', gap: 12 }}>
+          Failed to load organizations: {orgsError}.
+          <button className="btn-ghost" onClick={onSignOut}>Sign out</button>
+        </div>
+      )}
 
       <div className="org-grid">
         {orgs.map((org) => (

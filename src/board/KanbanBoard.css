@@ -171,6 +171,7 @@
   line-height: 1.4;
   overflow-wrap: break-word;
   min-width: 0;
+  filter: blur(4px);
 }
 
 .kanban-card__meta {
@@ -183,6 +184,7 @@
 .kanban-card__number {
   font-size: 11px;
   color: #6e7681;
+  filter: blur(4px);
 }
 
 .kanban-card__state {
@@ -218,6 +220,7 @@
 .kanban-card__label {
   font-size: 11px;
   padding: 1px 7px;
+  filter: blur(4px);
   border-radius: 10px;
   border: 1px solid;
   font-weight: 500;

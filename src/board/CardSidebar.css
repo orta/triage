@@ -176,6 +176,10 @@
   gap: 8px;
 }
 
+.card-sidebar__section--pull-up {
+  margin-top: -48px;
+}
+
 .card-sidebar__section-label {
   display: flex;
   align-items: center;
