@@ -43,7 +43,7 @@ export function ProjectList({ org }: Props) {
     .sort((a, b) => {
       if (String(a?.number) === lastProject) return -1
       if (String(b?.number) === lastProject) return 1
-      return 0
+      return new Date(b?.updatedAt ?? 0).getTime() - new Date(a?.updatedAt ?? 0).getTime()
     })
 
   return (

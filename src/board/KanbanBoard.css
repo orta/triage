@@ -169,6 +169,8 @@
   font-size: 13px;
   color: #e6edf3;
   line-height: 1.4;
+  overflow-wrap: break-word;
+  min-width: 0;
 }
 
 .kanban-card__meta {
